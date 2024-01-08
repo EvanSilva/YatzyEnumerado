@@ -3,13 +3,8 @@ class Yatzy:
     @staticmethod
     def chance(*dices):
         '''
-        Code smells:
-        - La función estaba hecha para aceptar un numero fijo de dados.
-        - La función sumaba los dados de uno en uno.
+        - A parameter list has too many parameters.
 
-        Arreglos:
-        - La función acepta un numero ilimitado de dados o variablessin estar limitada a 5, acepta 1 o 900.
-        - La función se ha simplificado para lectura.
         '''
         total = 0
         for die in dices:
@@ -27,19 +22,16 @@ class Yatzy:
         return 0
     
     @staticmethod
-    def ones( d1,  d2,  d3,  d4,  d5):
+    def ones(*dices):
+        '''
+        - Replace a magic number with a named constant.
+        '''
         sum = 0
-        if (d1 == 1):
-            sum += 1
-        if (d2 == 1):
-            sum += 1
-        if (d3 == 1):
-            sum += 1
-        if (d4 == 1):
-            sum += 1
-        if (d5 == 1): 
-            sum += 1
-
+        ONE = 1
+        for die in dices:
+            if die == ONE:
+                sum += 1
+                
         return sum
     
 
