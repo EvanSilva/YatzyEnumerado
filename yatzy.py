@@ -1,13 +1,19 @@
 class Yatzy:
 
     @staticmethod
-    def chance(d1, d2, d3, d4, d5):
+    def chance(*dices):
+        '''
+        Code smells:
+        - La función estaba hecha para aceptar un numero fijo de dados.
+        - La función sumaba los dados de uno en uno.
+
+        Arreglos:
+        - La función acepta un numero ilimitado de dados o variablessin estar limitada a 5, acepta 1 o 900.
+        - La función se ha simplificado para lectura.
+        '''
         total = 0
-        total += d1
-        total += d2
-        total += d3
-        total += d4
-        total += d5
+        for die in dices:
+            total += die
         return total
 
     @staticmethod
