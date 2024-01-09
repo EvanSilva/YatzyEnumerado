@@ -29,12 +29,7 @@ class Yatzy:
         '''
         ONE = 1
         sum = 0
-        for die in dices:
-            if die == ONE:
-                sum += 1
-
-        return sum
-    
+        return dices.count(ONE) * ONE
 
     @staticmethod
     def twos( d1,  d2,  d3,  d4,  d5):
