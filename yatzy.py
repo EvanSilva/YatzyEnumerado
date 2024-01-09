@@ -25,13 +25,14 @@ class Yatzy:
     def ones(*dices):
         '''
         - Replace a magic number with a named constant.
+        - Code is too long.
         '''
-        sum = 0
         ONE = 1
+        sum = 0
         for die in dices:
             if die == ONE:
                 sum += 1
-                
+
         return sum
     
 
