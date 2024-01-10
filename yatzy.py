@@ -71,24 +71,23 @@ class Yatzy:
             return Yatzy.ZERO
     
     @staticmethod
-    def two_pair( d1,  d2,  d3,  d4,  d5):
-        counts = [0]*6
-        counts[d1-1] += 1
-        counts[d2-1] += 1
-        counts[d3-1] += 1
-        counts[d4-1] += 1
-        counts[d5-1] += 1
-        n = 0
-        score = 0
-        for i in range(6):
-            if (counts[6-i-1] >= 2):
-                n = n+1
-                score += (6-i)
-                    
-        if (n == 2):
-            return score * 2
+    def two_pair(*dices):
+        TWO = 2
+        THREE = 3
+
+        pairs = []
+        for die in dices:
+            if dices.count(die) == TWO and die not in pairs:
+                pairs.append(die)
+            if dices.count(die) == THREE and die not in pairs:
+                pairs.append(die)
+
+        if len(pairs) == TWO:
+            return sum(pairs) * TWO 
         else:
-            return 0
+            return Yatzy.ZERO
+
+
     
     @staticmethod
     def four_of_a_kind( _1,  _2,  d3,  d4,  d5):
