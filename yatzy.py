@@ -65,10 +65,8 @@ class Yatzy:
             if dices.count(die) == TWO:
                 highest_pair_value = max(highest_pair_value,die)
 
-        if highest_pair_value != 0:
-            return highest_pair_value * TWO
-        else:
-            return Yatzy.ZERO
+        return highest_pair_value * TWO if highest_pair_value != 0 else Yatzy.ZERO
+
     
     @staticmethod
     def two_pair(*dices):
@@ -82,10 +80,8 @@ class Yatzy:
             if dices.count(die) == THREE and die not in pairs:
                 pairs.append(die)
 
-        if len(pairs) == TWO:
-            return sum(pairs) * TWO 
-        else:
-            return Yatzy.ZERO
+    
+        return sum(pairs) * TWO if len(pairs) == TWO else Yatzy.ZERO
 
 
     
@@ -109,24 +105,15 @@ class Yatzy:
         for die in dices:
             if dices.count(die) == THREE or dices.count(die) == FOUR:
                 return die * THREE
+            
         return Yatzy.ZERO
     
 
     @staticmethod
-    def smallStraight( d1,  d2,  d3,  d4,  d5):
-        tallies = [0]*6
-        tallies[d1-1] += 1
-        tallies[d2-1] += 1
-        tallies[d3-1] += 1
-        tallies[d4-1] += 1
-        tallies[d5-1] += 1
-        if (tallies[0] == 1 and
-            tallies[1] == 1 and
-            tallies[2] == 1 and
-            tallies[3] == 1 and
-            tallies[4] == 1):
-            return 15
-        return 0
+    def smallStraight(*dices):
+        FIFTEEN = 15
+
+        return FIFTEEN if sorted(dices) == [1,2,3,4,5] else Yatzy.ZERO
     
 
     @staticmethod
