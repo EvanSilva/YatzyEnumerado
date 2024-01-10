@@ -14,8 +14,8 @@ class Yatzy:
         return total
 
     @staticmethod
-    def yatzy(dice):
-        if all(die == dice[0] for die in dice):
+    def yatzy(*dices):
+        if all(die == dices[0] for die in dices):
                 return Yatzy.FIFTY
         else:
                 return Yatzy.ZERO
