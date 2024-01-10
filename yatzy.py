@@ -43,11 +43,9 @@ class Yatzy:
         self.dice = list(dices)
     
     def fours(self):
+        FOUR = 4
         sum = 0
-        for at in range(5):
-            if (self.dice[at] == 4): 
-                sum += 4
-        return sum
+        return self.dice.count(FOUR) * FOUR
     
 
     def fives(self):
