@@ -90,31 +90,26 @@ class Yatzy:
 
     
     @staticmethod
-    def four_of_a_kind( _1,  _2,  d3,  d4,  d5):
-        tallies = [0]*6
-        tallies[_1-1] += 1
-        tallies[_2-1] += 1
-        tallies[d3-1] += 1
-        tallies[d4-1] += 1
-        tallies[d5-1] += 1
-        for i in range(6):
-            if (tallies[i] >= 4):
-                return (i+1) * 4
-        return 0
+    def four_of_a_kind(*dices):
+        FOUR = 4
+        FIVE = 5
+
+        for die in dices:
+            if dices.count(die) == FOUR or dices.count(die) == FIVE:
+                return die * FOUR
+            
+        return Yatzy.ZERO
     
 
     @staticmethod
-    def three_of_a_kind( d1,  d2,  d3,  d4,  d5):
-        t = [0]*6
-        t[d1-1] += 1
-        t[d2-1] += 1
-        t[d3-1] += 1
-        t[d4-1] += 1
-        t[d5-1] += 1
-        for i in range(6):
-            if (t[i] >= 3):
-                return (i+1) * 3
-        return 0
+    def three_of_a_kind(*dices):
+        THREE = 3
+        FOUR = 4
+
+        for die in dices:
+            if dices.count(die) == THREE or dices.count(die) == FOUR:
+                return die * THREE
+        return Yatzy.ZERO
     
 
     @staticmethod
