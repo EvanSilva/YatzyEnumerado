@@ -9,6 +9,7 @@ class Yatzy:
     def chance(*dices):
         '''
         - A parameter list has too many parameters.
+        . A middle man object isn't doing anything
         '''
         return sum(dices)
 
@@ -37,10 +38,10 @@ class Yatzy:
         THREE = 3
         return dices.count(THREE) * THREE
     
-    
-    def fours(self):
+    @staticmethod
+    def fours(*dices):
         FOUR = 4
-        return self.dice.count(FOUR) * FOUR
+        return dices.count(FOUR) * FOUR
     
 
     def fives(self):
