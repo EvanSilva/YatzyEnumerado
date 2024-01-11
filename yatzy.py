@@ -43,10 +43,10 @@ class Yatzy:
         FOUR = 4
         return dices.count(FOUR) * FOUR
     
-
-    def fives(self):
+    @staticmethod   
+    def fives(*dices):
         FIVE = 5
-        return self.dice.count(FIVE) * FIVE
+        return dices.count(FIVE) * FIVE
     
 
     def sixes(self):
