@@ -9,12 +9,8 @@ class Yatzy:
     def chance(*dices):
         '''
         - A parameter list has too many parameters.
-
         '''
-        total = 0
-        for die in dices:
-            total += die
-        return total
+        return sum(dices)
 
     @staticmethod
     def yatzy(*dices):
@@ -27,7 +23,6 @@ class Yatzy:
     def ones(*dices):
         '''
         - Replace a magic number with a named constant.
-        - Code is too long.
         '''
         ONE = 1
         return dices.count(ONE) * ONE
