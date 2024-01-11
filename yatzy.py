@@ -48,10 +48,10 @@ class Yatzy:
         FIVE = 5
         return dices.count(FIVE) * FIVE
     
-
-    def sixes(self):
+    @staticmethod
+    def sixes(*dices):
         SIX = 6
-        return self.dice.count(SIX) * SIX
+        return dices.count(SIX) * SIX
     
     @staticmethod
     def score_pair(*dices):
