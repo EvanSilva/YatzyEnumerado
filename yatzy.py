@@ -2,6 +2,9 @@ class Yatzy:
     FIFTY = 50 
     ZERO = 0
 
+    def __init__(self, *dices):
+        self.dice = list(dices)
+
     @staticmethod
     def chance(*dices):
         '''
@@ -39,8 +42,6 @@ class Yatzy:
         THREE = 3
         return dices.count(THREE) * THREE
     
-    def __init__(self, *dices):
-        self.dice = list(dices)
     
     def fours(self):
         FOUR = 4
@@ -62,23 +63,26 @@ class Yatzy:
 
         highest_pair_value = 0
         for die in dices:
-            if dices.count(die) == TWO:
+            if dices.count(die) >= TWO:
                 highest_pair_value = max(highest_pair_value,die)
 
         return highest_pair_value * TWO if highest_pair_value != 0 else Yatzy.ZERO
 
-    
+
     @staticmethod
     def two_pair(*dices):
         TWO = 2
         THREE = 3
+        FOUR = 4
 
         pairs = []
         for die in dices:
             if dices.count(die) == TWO and die not in pairs:
                 pairs.append(die)
-            if dices.count(die) == THREE and die not in pairs:
+            elif dices.count(die) == THREE and die not in pairs:
                 pairs.append(die)
+            elif dices.count(die) >= FOUR and die not in pairs:
+                pairs.extend([die,die])
 
     
         return sum(pairs) * TWO if len(pairs) == TWO else Yatzy.ZERO
@@ -88,10 +92,9 @@ class Yatzy:
     @staticmethod
     def four_of_a_kind(*dices):
         FOUR = 4
-        FIVE = 5
 
         for die in dices:
-            if dices.count(die) == FOUR or dices.count(die) == FIVE:
+            if dices.count(die) >= FOUR:
                 return die * FOUR
             
         return Yatzy.ZERO
@@ -100,10 +103,9 @@ class Yatzy:
     @staticmethod
     def three_of_a_kind(*dices):
         THREE = 3
-        FOUR = 4
 
         for die in dices:
-            if dices.count(die) == THREE or dices.count(die) == FOUR:
+            if dices.count(die) >= THREE:
                 return die * THREE
             
         return Yatzy.ZERO
