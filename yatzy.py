@@ -115,8 +115,9 @@ class Yatzy:
     @staticmethod
     def largeStraight(*dices):
         TWENTY = 20
+        STAIR = list(range(2,7))
 
-        return TWENTY if sorted(dices) == [2,3,4,5,6] else Yatzy.ZERO
+        return TWENTY if sorted(dices) == STAIR else Yatzy.ZERO
         
     
 
