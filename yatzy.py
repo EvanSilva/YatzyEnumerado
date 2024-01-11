@@ -2,9 +2,6 @@ class Yatzy:
     FIFTY = 50 
     ZERO = 0
 
-    def __init__(self, *dices):
-        self.dice = list(dices)
-
     @staticmethod
     def chance(*dices):
         '''
