@@ -107,8 +107,9 @@ class Yatzy:
     @staticmethod
     def smallStraight(*dices):
         FIFTEEN = 15
+        STAIR = list(range(1,6))
 
-        return FIFTEEN if sorted(dices) == [1,2,3,4,5] else Yatzy.ZERO
+        return FIFTEEN if sorted(dices) == STAIR else Yatzy.ZERO
     
 
     @staticmethod
