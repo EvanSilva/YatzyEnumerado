@@ -106,18 +106,16 @@ class Yatzy:
 
     @staticmethod
     def smallStraight(*dices):
-        FIFTEEN = 15
         STAIR = list(range(1,6))
 
-        return FIFTEEN if sorted(dices) == STAIR else Yatzy.ZERO
+        return sum(dices) if sorted(dices) == STAIR else Yatzy.ZERO
     
 
     @staticmethod
     def largeStraight(*dices):
-        TWENTY = 20
         STAIR = list(range(2,7))
 
-        return TWENTY if sorted(dices) == STAIR else Yatzy.ZERO
+        return sum(dices) if sorted(dices) == STAIR else Yatzy.ZERO
         
     
 
