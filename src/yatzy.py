@@ -64,33 +64,24 @@ class Yatzy:
 
     @classmethod
     def two_pair(cls,*dices):
-        TWO = 2
+        TWO = Pips.TWO.value
         
         two_pairs = cls._filter_repeated_pips(dices,TWO)
         return sum(two_pairs) * TWO if len(two_pairs) == 2 else Yatzy.ZERO
-
     
-    @staticmethod
-    def four_of_a_kind(*dices):
-        FOUR = 4
+    @classmethod
+    def three_of_a_kind(cls,*dices):
+        THREE = Pips.THREE.value
 
-        for die in dices:
-            if dices.count(die) >= FOUR:
-                return die * FOUR
-            
-        return Yatzy.ZERO
-    
+        trio = cls._filter_repeated_pips(dices,THREE)
+        return trio[-1] * THREE if trio else Yatzy.ZERO
 
-    @staticmethod
-    def three_of_a_kind(*dices):
-        THREE = 3
+    @classmethod
+    def four_of_a_kind(cls,*dices):
+        FOUR = Pips.FOUR.value
 
-        for die in dices:
-            if dices.count(die) >= THREE:
-                return die * THREE
-            
-        return Yatzy.ZERO
-    
+        poker = cls._filter_repeated_pips(dices,FOUR)
+        return poker[-1] * FOUR if poker else Yatzy.ZERO
 
     @staticmethod
     def smallStraight(*dices):
