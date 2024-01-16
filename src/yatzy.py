@@ -7,10 +7,6 @@ class Yatzy:
 
     @staticmethod
     def chance(*dices):
-        '''
-        - A parameter list has too many parameters.
-        . A middle man object isn't doing anything
-        '''
         return sum(dices)
 
     @staticmethod
@@ -25,32 +21,34 @@ class Yatzy:
         return dices.count(target) * target
     
     @classmethod
-    def ones(cls, *dices):
-        '''
-        - Replace a magic number with a named constant.
-        '''
+    def ones(cls,*dices):
         ONE = Pips.ONE.value
         return cls.__pip_filter(dices,ONE)  
 
-    @staticmethod
-    def twos(*dices):
-        return dices.count(Pips.TWO.value) * Pips.TWO.value
+    @classmethod
+    def twos(cls,*dices):
+        TWO = Pips.TWO.value
+        return cls.__pip_filter(dices,TWO)
     
-    @staticmethod
-    def threes(*dices):
-        return dices.count(Pips.THREE.value) * Pips.THREE.value
+    @classmethod
+    def threes(cls,*dices):
+        THREE = Pips.THREE.value
+        return cls.__pip_filter(dices,THREE)
     
-    @staticmethod
-    def fours(*dices):
-        return dices.count(Pips.FOUR.value) * Pips.FOUR.value
+    @classmethod
+    def fours(cls,*dices):
+        FOUR = Pips.FOUR.value
+        return cls.__pip_filter(dices,FOUR)
         
-    @staticmethod   
-    def fives(*dices):
-        return dices.count(Pips.FIVE.value) * Pips.FIVE.value
+    @classmethod   
+    def fives(cls,*dices):
+        FIVE = Pips.FIVE.value
+        return cls.__pip_filter(dices,FIVE)
     
-    @staticmethod
-    def sixes(*dices):
-        return dices.count(Pips.SIX.value) * Pips.SIX.value
+    @classmethod
+    def sixes(cls,*dices):
+        SIX = Pips.SIX.value
+        return cls.__pip_filter(dices,SIX)
     
     @staticmethod
     def score_pair(*dices):
