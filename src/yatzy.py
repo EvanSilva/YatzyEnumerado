@@ -19,13 +19,18 @@ class Yatzy:
                 return Yatzy.FIFTY
         else:
                 return Yatzy.ZERO
+        
+    @classmethod
+    def __pip_filter(cls, dices, target):
+        return dices.count(target) * target
     
-    @staticmethod
-    def ones(*dices):
+    @classmethod
+    def ones(cls, *dices):
         '''
         - Replace a magic number with a named constant.
         '''
-        return dices.count(Pips.ONE.value) * Pips.ONE.value
+        ONE = Pips.ONE.value
+        return cls.__pip_filter(dices,ONE)  
 
     @staticmethod
     def twos(*dices):
@@ -37,9 +42,8 @@ class Yatzy:
     
     @staticmethod
     def fours(*dices):
-        times_number = filter(pips.number_filter(dices))
-        return Pips.number_finder * Pips.FOUR.value
-    
+        return dices.count(Pips.FOUR.value) * Pips.FOUR.value
+        
     @staticmethod   
     def fives(*dices):
         return dices.count(Pips.FIVE.value) * Pips.FIVE.value

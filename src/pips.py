@@ -11,4 +11,6 @@ class Pips(Enum):
     SIX = 6
 
     @classmethod
-    def 
+    def values(cls):
+        return [number._value_ for number in cls.__members__.values()]
+    
