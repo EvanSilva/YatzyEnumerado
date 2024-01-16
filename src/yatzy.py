@@ -17,38 +17,38 @@ class Yatzy:
                 return Yatzy.ZERO
         
     @classmethod
-    def __pip_filter(cls, dices, target):
+    def __pip_counter(cls, dices, target):
         return dices.count(target) * target
     
     @classmethod
     def ones(cls,*dices):
         ONE = Pips.ONE.value
-        return cls.__pip_filter(dices,ONE)  
+        return cls.__pip_counter(dices,ONE)  
 
     @classmethod
     def twos(cls,*dices):
         TWO = Pips.TWO.value
-        return cls.__pip_filter(dices,TWO)
+        return cls.__pip_counter(dices,TWO)
     
     @classmethod
     def threes(cls,*dices):
         THREE = Pips.THREE.value
-        return cls.__pip_filter(dices,THREE)
+        return cls.__pip_counter(dices,THREE)
     
     @classmethod
     def fours(cls,*dices):
         FOUR = Pips.FOUR.value
-        return cls.__pip_filter(dices,FOUR)
+        return cls.__pip_counter(dices,FOUR)
         
     @classmethod   
     def fives(cls,*dices):
         FIVE = Pips.FIVE.value
-        return cls.__pip_filter(dices,FIVE)
+        return cls.__pip_counter(dices,FIVE)
     
     @classmethod
     def sixes(cls,*dices):
         SIX = Pips.SIX.value
-        return cls.__pip_filter(dices,SIX)
+        return cls.__pip_counter(dices,SIX)
     
     @staticmethod
     def score_pair(*dices):
