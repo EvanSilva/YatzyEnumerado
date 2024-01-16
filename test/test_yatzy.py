@@ -51,6 +51,12 @@ def test_sixes_test():
         assert 18 == Yatzy.sixes(6,5,6,6,5)
   
 
+def test_filter():
+        assert Yatzy._filter_repeated_pips([1,2,3,3,4],2) == [3]  
+        assert Yatzy._filter_repeated_pips([1,2,2,3,2],3) == [2]  
+        assert Yatzy._filter_repeated_pips([1,1,1,3,4],3) == [1]  
+        assert Yatzy._filter_repeated_pips([6,6,6,3,6],4) == [6]  
+
 def test_one_pair():
         assert 6 == Yatzy.score_pair(3,4,3,5,6)
         assert 10 == Yatzy.score_pair(5,3,3,3,5)
