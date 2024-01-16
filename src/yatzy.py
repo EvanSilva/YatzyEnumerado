@@ -50,6 +50,10 @@ class Yatzy:
         SIX = Pips.SIX.value
         return cls.__pip_counter(dices,SIX)
     
+    @classmethod
+    def _filter_repeated_pips(cls,dices,times):
+        return list(filter(lambda x: dices.count(x) >= times,Pips.values()))
+        
     @staticmethod
     def score_pair(*dices):
         TWO = 2
