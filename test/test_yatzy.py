@@ -56,18 +56,21 @@ def test_filter():
         assert Yatzy._filter_repeated_pips([1,2,2,3,2],3) == [2]  
         assert Yatzy._filter_repeated_pips([1,1,1,3,4],3) == [1]  
         assert Yatzy._filter_repeated_pips([6,6,6,3,6],4) == [6]  
+        assert Yatzy._filter_repeated_pips([1,1,2,2,6],2) == [1,2] 
+        assert Yatzy._filter_repeated_pips([2,2,1,1,6],2) == [1,2] 
 
 def test_one_pair():
         assert 6 == Yatzy.score_pair(3,4,3,5,6)
         assert 10 == Yatzy.score_pair(5,3,3,3,5)
         assert 12 == Yatzy.score_pair(5,3,6,6,5)
+        assert 4 == Yatzy.score_pair(2,2,1,1,5)
   
 
 def test_two_Pair():
         assert 16 == Yatzy.two_pair(3,3,5,4,5)
         assert 18 == Yatzy.two_pair(3,3,6,6,6)
         assert 0 == Yatzy.two_pair(3,3,6,5,4)
-        assert 12 == Yatzy.two_pair(3,3,3,3,5)
+        assert 0 == Yatzy.two_pair(3,3,3,3,5)
   
 
 def test_three_of_a_kind():

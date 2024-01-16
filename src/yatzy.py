@@ -54,36 +54,20 @@ class Yatzy:
     def _filter_repeated_pips(cls,dices,times):
         return list(filter(lambda x: dices.count(x) >= times,Pips.values()))
         
-    @staticmethod
-    def score_pair(*dices):
+    @classmethod
+    def score_pair(cls, *dices):
+        TWO = Pips.TWO.value
+
+        pairs = cls._filter_repeated_pips(dices,TWO)
+        return pairs[-1] * TWO if pairs else Yatzy.ZERO
+
+
+    @classmethod
+    def two_pair(cls,*dices):
         TWO = 2
-
-        highest_pair_value = 0
-        for die in dices:
-            if dices.count(die) >= TWO:
-                highest_pair_value = max(highest_pair_value,die)
-
-        return highest_pair_value * TWO if highest_pair_value != 0 else Yatzy.ZERO
-
-
-    @staticmethod
-    def two_pair(*dices):
-        TWO = 2
-        THREE = 3
-        FOUR = 4
-
-        pairs = []
-        for die in dices:
-            if dices.count(die) == TWO and die not in pairs:
-                pairs.append(die)
-            elif dices.count(die) == THREE and die not in pairs:
-                pairs.append(die)
-            elif dices.count(die) >= FOUR and die not in pairs:
-                pairs.extend([die,die])
-
-    
-        return sum(pairs) * TWO if len(pairs) == TWO else Yatzy.ZERO
-
+        
+        two_pairs = cls._filter_repeated_pips(dices,TWO)
+        return sum(two_pairs) * TWO if len(two_pairs) == 2 else Yatzy.ZERO
 
     
     @staticmethod
