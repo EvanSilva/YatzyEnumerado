@@ -1,4 +1,7 @@
+from src.pips import Pips
+
 class Yatzy:
+
     FIFTY = 50 
     ZERO = 0
 
@@ -22,33 +25,28 @@ class Yatzy:
         '''
         - Replace a magic number with a named constant.
         '''
-        ONE = 1
-        return dices.count(ONE) * ONE
+        return dices.count(Pips.ONE.value) * Pips.ONE.value
 
     @staticmethod
     def twos(*dices):
-        TWO = 2
-        return dices.count(TWO) * TWO
+        return dices.count(Pips.TWO.value) * Pips.TWO.value
     
     @staticmethod
     def threes(*dices):
-        THREE = 3
-        return dices.count(THREE) * THREE
+        return dices.count(Pips.THREE.value) * Pips.THREE.value
     
     @staticmethod
     def fours(*dices):
-        FOUR = 4
-        return dices.count(FOUR) * FOUR
+        times_number = filter(pips.number_filter(dices))
+        return Pips.number_finder * Pips.FOUR.value
     
     @staticmethod   
     def fives(*dices):
-        FIVE = 5
-        return dices.count(FIVE) * FIVE
+        return dices.count(Pips.FIVE.value) * Pips.FIVE.value
     
     @staticmethod
     def sixes(*dices):
-        SIX = 6
-        return dices.count(SIX) * SIX
+        return dices.count(Pips.SIX.value) * Pips.SIX.value
     
     @staticmethod
     def score_pair(*dices):
