@@ -98,17 +98,13 @@ class Yatzy:
         
     
 
-    @staticmethod
-    def fullHouse(*dices):
-        TWO = 2
-        THREE = 3
+    @classmethod
+    def fullHouse(cls,*dices):
+        TWO = Pips.TWO.value
+        THREE = Pips.THREE.value
 
-        full = []
-        for die in dices:
-            if dices.count(die) == TWO and die not in full:
-                full.append(die)
-            if dices.count(die) == THREE and die not in full:
-                full.append(die)
+        pair = cls._filter_repeated_pips(dices,TWO)
+        trio = cls._filter_repeated_pips(dices,THREE)
 
     
-        return sum(dices) if len(full) == TWO else Yatzy.ZERO
+        return (pair[-1] * TWO) + (trio[-1] * THREE) if (pair and trio) else Yatzy.ZERO
