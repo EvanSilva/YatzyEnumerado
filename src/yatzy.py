@@ -83,18 +83,18 @@ class Yatzy:
         poker = cls._filter_repeated_pips(dices,FOUR)
         return poker[-1] * FOUR if poker else Yatzy.ZERO
 
-    @staticmethod
-    def smallStraight(*dices):
+    @classmethod
+    def smallStraight(cls,*dices):
         STAIR = list(range(1,6))
 
-        return sum(dices) if sorted(dices) == STAIR else Yatzy.ZERO
+        return cls.chance(*dices) if sorted(dices) == STAIR else Yatzy.ZERO
     
 
-    @staticmethod
-    def largeStraight(*dices):
+    @classmethod
+    def largeStraight(cls,*dices):
         STAIR = list(range(2,7))
 
-        return sum(dices) if sorted(dices) == STAIR else Yatzy.ZERO
+        return cls.chance(*dices) if sorted(dices) == STAIR else Yatzy.ZERO
         
     
 
