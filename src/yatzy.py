@@ -11,10 +11,7 @@ class Yatzy:
 
     @staticmethod
     def yatzy(*dices):
-        if all(die == dices[0] for die in dices):
-                return Yatzy.FIFTY
-        else:
-                return Yatzy.ZERO
+        return Yatzy.FIFTY if all(die == dices[0] for die in dices) else Yatzy.ZERO
         
     @classmethod
     def __pip_counter(cls, dices, target):
