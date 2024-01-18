@@ -53,13 +53,19 @@ class Yatzy:
     @classmethod
     def _filter_repeated_pips(cls,dices,times):
         return list(filter(lambda x: dices.count(x) >= times,Pips.values()))
+    
+    @classmethod
+    def _biggest_repeated_pip(cls,dices,times):
+        
+        biggest = cls._filter_repeated_pips(dices,times)
+        return biggest[-1] if biggest else []
         
     @classmethod
     def score_pair(cls, *dices):
         TWO = Pips.TWO.value
 
-        pairs = cls._filter_repeated_pips(dices,TWO)
-        return pairs[-1] * TWO if pairs else Yatzy.ZERO
+        pairs = cls._biggest_repeated_pip(dices,TWO)
+        return pairs * TWO if pairs else Yatzy.ZERO
 
 
     @classmethod
@@ -67,21 +73,21 @@ class Yatzy:
         TWO = Pips.TWO.value
         
         two_pairs = cls._filter_repeated_pips(dices,TWO)
-        return sum(two_pairs) * TWO if len(two_pairs) == 2 else Yatzy.ZERO
+        return sum(two_pairs) * TWO if len(two_pairs) == TWO else Yatzy.ZERO
     
     @classmethod
     def three_of_a_kind(cls,*dices):
         THREE = Pips.THREE.value
 
-        trio = cls._filter_repeated_pips(dices,THREE)
-        return trio[-1] * THREE if trio else Yatzy.ZERO
+        trio = cls._biggest_repeated_pip(dices,THREE)
+        return trio * THREE if trio else Yatzy.ZERO
 
     @classmethod
     def four_of_a_kind(cls,*dices):
         FOUR = Pips.FOUR.value
 
-        poker = cls._filter_repeated_pips(dices,FOUR)
-        return poker[-1] * FOUR if poker else Yatzy.ZERO
+        poker = cls._biggest_repeated_pip(dices,FOUR)
+        return poker * FOUR if poker else Yatzy.ZERO
 
     @classmethod
     def smallStraight(cls,*dices):
@@ -103,8 +109,8 @@ class Yatzy:
         TWO = Pips.TWO.value
         THREE = Pips.THREE.value
 
-        pair = cls._filter_repeated_pips(dices,TWO)
-        trio = cls._filter_repeated_pips(dices,THREE)
+        pair = cls._biggest_repeated_pip(dices,TWO)
+        trio = cls._biggest_repeated_pip(dices,THREE)
 
     
-        return (pair[-1] * TWO) + (trio[-1] * THREE) if (pair and trio) else Yatzy.ZERO
+        return (pair * TWO) + (trio * THREE) if (pair and trio) else Yatzy.ZERO
